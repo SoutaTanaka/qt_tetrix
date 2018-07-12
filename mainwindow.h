@@ -19,10 +19,11 @@ class TetrixPiece
 {
 public:
     TetrixPiece() { setShape(NoShape);}
+
     void setRandomShape();
     void setShape(TetrixShape shape);
 
-    TetrixPiece shape() const { return pieceShape;}
+    TetrixShape shape() const { return pieceShape;}
     int x(int index) const { return coords[index][0]; }
     int y(int index) const { return coords[index][0]; }
     int minX() const;
@@ -39,6 +40,8 @@ private:
     TetrixShape pieceShape;
     int coords[4][2];
 };
+
+
 
 class TetrixWindow : public QWidget
 {
