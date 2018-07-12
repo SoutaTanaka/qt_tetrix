@@ -2,31 +2,39 @@
 #include "ui_mainwindow.h"
 
 
-void TetrixPiece::setRandomShape()
-{
-    setShape(TetrixShape(QRandomGenerator::grobal()->bounded(7) : 1));
-}
 
-void TetrixPiece::setShape(TetrixShape shape)
+TetrixPiece TetrixPiece::rotatedLeft() const
 {
-    static const int coodsTabel[8][4][2] = {
-        { { 0, 0 },   { 0, 0 },   { 0, 0 },   { 0, 0 } },
-        { { 0, -1 },  { 0, 0 },   { -1, 0 },  { -1, 1 } },
-        { { 0, -1 },  { 0, 0 },   { 1, 0 },   { 1, 1 } },
-        { { 0, -1 },  { 0, 0 },   { 0, 1 },   { 0, 2 } },
-        { { -1, 0 },  { 0, 0 },   { 1, 0 },   { 0, 1 } },
-        { { 0, 0 },   { 1, 0 },   { 0, 1 },   { 1, 1 } },
-        { { -1, -1 }, { 0, -1 },  { 0, 0 },   { 0, 1 } },
-        { { 1, -1 },  { 0, -1 },  { 0, 0 },   { 0, 1 } }
-    };
-
-    for(int i = 0; i < 4; i++){
-        for(int j = 0; j < 2; j++){
-            coords[i][j] = coodsTabel[shape][i][j];
-        }
+    if(pieceShape == SquareShape)
+    {
+        return *this;
     }
-    pieceShape = shape;
+
+    TetrixPiece result;
+    result.pieceShape = pieceShape;
+    for(int i = 0; i < 4; i++)
+    {
+        result.setX(i, y(i));
+        result.setY(i, -x(i));
+    }
 }
+
+TetrixPiece TetrixPiece::rotatedRight() const
+{
+    if(pieceShape == SquareShape)
+    {
+        return *this;
+    }
+
+    TetrixPiece result;
+    result.pieceShape = pieceShape;
+    for(int i = 0; i < 4; i++)
+    {
+        result.setX(i, y(i));
+        result.setY(i, -x(i));
+    }
+}
+
 
 
 TetrixWindow::TetrixWindow()
