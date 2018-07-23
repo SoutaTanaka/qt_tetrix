@@ -9,7 +9,6 @@ TetrixPiece TetrixPiece::rotatedLeft() const
     {
         return *this;
     }
-
     TetrixPiece result;
     result.pieceShape = pieceShape;
     for(int i = 0; i < 4; i++)
@@ -25,7 +24,6 @@ TetrixPiece TetrixPiece::rotatedRight() const
     {
         return *this;
     }
-
     TetrixPiece result;
     result.pieceShape = pieceShape;
     for(int i = 0; i < 4; i++)

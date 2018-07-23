@@ -54,6 +54,13 @@ private:
 
     QBasicTimer timer;
     QPointer<QLabel> nextPieceLevel;
+    bool isStarted;
+    bool isPaused;
+    bool isWaitingAfterLine;
+    TetrixPiece curPiece;
+    int score;
+    int level;
+    TetrixShape board[BoardWidth * BoardHeight];
 };
 
 
